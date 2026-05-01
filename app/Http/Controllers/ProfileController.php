@@ -74,9 +74,10 @@ class ProfileController extends Controller
             $totalReports = $user->items()->count();
             $lost = $user->items()->where('status', 'lost')->count();
             $found = $user->items()->where('status', 'found')->count();
+            $returned = $user->items()->where('status', 'returned')->count();
 
             return view('profile.index', compact(
-                'user', 'items', 'totalReports', 'lost', 'found', 'status'
+                'user', 'items', 'totalReports', 'lost', 'found', 'returned', 'status'
             ));
         }
 

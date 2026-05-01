@@ -338,9 +338,9 @@
           </p>
 
           <ul class="list-unstyled feature-list">
-            <li><i class='bx bx-check'></i> Priority listing</li>
-            <li><i class='bx bx-check'></i> Highlighted posts</li>
-            <li><i class='bx bx-check'></i> Email notifications</li>
+            <li><i class='bx bx-check'></i> Priority listing in search</li>
+            <li><i class='bx bx-check'></i> Highlighted report card</li>
+            <li><i class='bx bx-check'></i> Auto bump reports</li>
             <li><i class='bx bx-check'></i> Faster support</li>
           </ul>
 
@@ -359,14 +359,14 @@
 
           <h3 class="fw-bold">IDR 50.000</h3>
           <p class="text-muted small mb-4">
-            APA YA
+            Take full control of your reports with advanced tools and customization.
           </p>
 
           <ul class="list-unstyled feature-list">
-            <li><i class='bx bx-check'></i> Bingung</li>
-            <li><i class='bx bx-check'></i> Gak tau</li>
-            <li><i class='bx bx-check'></i> Hm</li>
-            <li><i class='bx bx-check'></i> Help</li>
+            <li><i class='bx bx-check'></i> Premium badge on report</li>
+            <li><i class='bx bx-check'></i> Upload multiple images</li>
+            <li><i class='bx bx-check'></i> Edit & update anytime</li>
+            <li><i class='bx bx-check'></i> Detailed report analytics</li>
           </ul>
 
           <a href="#" class="btn btn-outline-primary w-100 rounded-pill mt-4">

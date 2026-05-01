@@ -51,6 +51,7 @@ class ItemController extends Controller
             'category' => 'required',
             'location' => 'required|min:3|max:100',
             'contact_email' => 'required|email',
+            'status' => 'required|in:lost,found',
             'image' => 'nullable|image|max:2048'
         ]);
 
@@ -74,7 +75,7 @@ class ItemController extends Controller
             'category' => 'required',
             'location' => 'required',
             'contact_email' => 'required|email',
-            'status' => 'required',
+            'status' => 'required|in:lost,found,returned',
             'image' => 'nullable|image'
         ]);
 

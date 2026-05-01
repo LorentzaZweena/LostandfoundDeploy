@@ -91,6 +91,11 @@
                         class="filter-tab {{ $status == 'found' ? 'active-tab' : '' }}">
                             Found
                         </a>
+
+                        <a href="{{ url('/profile?status=returned') }}"
+                        class="filter-tab {{ $status == 'returned' ? 'active-tab' : '' }}">
+                            Returned
+                        </a>
                     </div>
                 </div>
                 @forelse($items as $item)
@@ -146,6 +151,7 @@
                                         <select name="status" class="form-control">
                                             <option value="lost" {{ $item->status == 'lost' ? 'selected' : '' }}>Lost</option>
                                             <option value="found" {{ $item->status == 'found' ? 'selected' : '' }}>Found</option>
+                                            <option value="returned" {{ $item->status == 'returned' ? 'selected' : '' }}>Returned</option>
                                         </select>
                                     </div>
 

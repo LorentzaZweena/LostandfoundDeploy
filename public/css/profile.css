@@ -141,3 +141,8 @@ html, body {
         padding-bottom: 90px;
     }
 }
+
+.badge-returned {
+    background: #e3f2fd;
+    color: #1565c0;
+}
