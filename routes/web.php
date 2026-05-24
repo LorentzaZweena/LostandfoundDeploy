@@ -20,8 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/profile/photo', [ProfileController::class, 'updatePhoto']);
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->middleware('auth')->name('profile.edit');
+    Route::post('/pay', [PaymentController::class, 'pay']);
 });
-
-Route::post('/pay', [PaymentController::class, 'pay']);
 
 require __DIR__.'/auth.php';

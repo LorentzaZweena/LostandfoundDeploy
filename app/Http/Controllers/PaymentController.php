@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Midtrans\Config;
+use Midtrans\Snap;
 
 class PaymentController extends Controller
 {
     public function pay(Request $request)
     {
-        Config::$serverKey = config('midtrans.serverKey');
-        Config::$isProduction = config('midtrans.isProduction');
+        Config::$serverKey = config('midtrans.server_key');
+        Config::$isProduction = config('midtrans.is_production');
         Config::$isSanitized = true;
         Config::$is3ds = true;
 
         $params = [
             'transaction_details' => [
                 'order_id' => uniqid(),
-                'gross_amount' => $request->price,
+                'gross_amount' => (int) $request->price,
             ],
 
             'customer_details' => [
@@ -26,10 +27,19 @@ class PaymentController extends Controller
             ],
         ];
 
-        $snapToken = Snap::getSnapToken($params);
+        try {
 
-        return response()->json([
-            'token' => $snapToken
-        ]);
+            $snapToken = Snap::getSnapToken($params);
+
+            return response()->json([
+                'token' => $snapToken
+            ]);
+
+        } catch (\Exception $e) {
+
+            return response()->json([
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 }

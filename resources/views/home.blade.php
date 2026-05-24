@@ -374,9 +374,7 @@
           </a>
         </div>
       </div>
-
     </div>
-
   </div>
 </section>
 <section class="faq py-5 bg-light">
@@ -637,10 +635,10 @@
           });
       </script>
       <script>
-        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        const mobileNavLinks = document.querySelectorAll('.navbar-nav .nav-link');
         const navbarCollapse = document.querySelector('.navbar-collapse');
 
-        navLinks.forEach(link => {
+        mobileNavLinks.forEach(link => {
           link.addEventListener('click', () => {
             const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
               toggle: false
@@ -674,7 +672,11 @@
               });
 
               const data = await response.json();
-
+              if (!data.token) {
+                  console.log(data);
+                  alert(data.error || "No token received");
+                  return;
+              }
               snap.pay(data.token, {
                   onSuccess: function(result){
                       alert("Payment Success!");
