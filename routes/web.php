@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PaymentController;
 use App\Models\Item;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/photo', [ProfileController::class, 'updatePhoto']);
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->middleware('auth')->name('profile.edit');
 });
+
+Route::post('/pay', [PaymentController::class, 'pay']);
 
 require __DIR__.'/auth.php';

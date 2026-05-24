@@ -332,7 +332,7 @@
             <h6 class="fw-semibold mb-0">Priority Plan</h6>
           </div>
 
-          <h3 class="fw-bold">IDR 15.000</h3>
+          <h3 class="fw-bold">IDR 17.000</h3>
           <p class="text-muted small mb-4">
             Ideal for users who want better visibility and faster responses.
           </p>
@@ -344,9 +344,9 @@
             <li><i class='bx bx-check'></i> Faster support</li>
           </ul>
 
-          <a href="#" class="btn btn-primary w-100 rounded-pill mt-4">
-            Get Started
-          </a>
+          <button class="btn btn-primary w-100 rounded-pill mt-4 pay-button" data-price="17000">
+              Get Started
+          </button>
         </div>
       </div>
 
@@ -503,12 +503,12 @@
 
     <div class="mb-3">
     📍 <strong>Head Office</strong><br>
-    Jakarta, Indonesia
+    Depok, Indonesia
     </div>
 
     <div class="mb-3">
     ✉️ <strong>Email Support</strong><br>
-    support@lostfound.com
+    lostfound@gmail.com
     </div>
 
     <div class="mb-4">
@@ -652,6 +652,47 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}">
+    </script>
+    <script>
+      document.querySelectorAll('.pay-button').forEach(button => {
+
+          button.addEventListener('click', async function () {
+
+              const price = this.dataset.price;
+
+              const response = await fetch('/pay', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                  },
+                  body: JSON.stringify({
+                      price: price
+                  })
+              });
+
+              const data = await response.json();
+
+              snap.pay(data.token, {
+                  onSuccess: function(result){
+                      alert("Payment Success!");
+                      window.location.reload();
+                  },
+
+                  onPending: function(result){
+                      alert("Waiting for payment!");
+                  },
+
+                  onError: function(result){
+                      alert("Payment failed!");
+                  }
+              });
+
+          });
+
+      });
+</script>
   </body>
 </html>
