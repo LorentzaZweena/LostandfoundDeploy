@@ -25,7 +25,6 @@
     <div class="row g-4">
         <div class="col-12 col-12 col-md-4">
             <div class="card-custom bg-white shadow-sm text-center">
-
                 <img src="{{ $user->profile_photo ? asset('storage/' . $user->profile_photo) : asset('img/pp.jpg') }}" class="profile-img mb-3">
                 <h5 class="fw-bold">{{ $user->name }}</h5>
                 <div class="d-flex flex-column flex-md-row gap-2 mt-3 w-100">
