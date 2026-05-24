@@ -1,2 +1,28 @@
-*
-!.gitignore
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+/.fleet
+/.idea
+/.vscode
+
+/storage/logs
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+
+/bootstrap/cache/*.php
+
+# IMPORTANT:
+# DON'T ignore SQLite
+# database/database.sqlite
