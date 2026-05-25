@@ -32,13 +32,13 @@
             <a class="nav-link fw-semibold" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/">Categories</a>
+            <a class="nav-link fw-semibold" href="/#categories">Categories</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/">Services</a>
+            <a class="nav-link fw-semibold" href="/#services">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/">Contact</a>
+            <a class="nav-link fw-semibold" href="/#contact">Contact</a>
           </li>
         </ul>
 

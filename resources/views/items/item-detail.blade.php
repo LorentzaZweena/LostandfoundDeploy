@@ -84,7 +84,7 @@
         </h2>
 
         @if($item->image)
-            <img src="{{ asset('storage/' . $item->image) }}" class="hero-img mb-4">
+            <img src="{{ asset($item->image) }}" class="hero-img mb-4">
         @else
             <img src="{{ asset('img/no-image.png') }}" class="hero-img mb-4">
         @endif
