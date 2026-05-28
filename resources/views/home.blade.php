@@ -659,41 +659,58 @@
 
               const price = this.dataset.price;
 
-              const response = await fetch('/pay', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                      'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                  },
-                  body: JSON.stringify({
-                      price: price
-                  })
-              });
+              try {
 
-              const data = await response.json();
-              if (!data.token) {
-                  console.log(data);
-                  alert(data.error || "No token received");
-                  return;
-              }
-              snap.pay(data.token, {
-                  onSuccess: function(result){
-                      alert("Payment Success!");
-                      window.location.reload();
-                  },
+                  const response = await fetch('/pay', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                          'Accept': 'application/json',
+                          'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                      },
+                      body: JSON.stringify({
+                          price: price
+                      })
+                  });
 
-                  onPending: function(result){
-                      alert("Waiting for payment!");
-                  },
+                  console.log("STATUS:", response.status);
 
-                  onError: function(result){
-                      alert("Payment failed!");
+                  const text = await response.text();
+
+                  console.log("RAW RESPONSE:", text);
+
+                  const data = JSON.parse(text);
+
+                  console.log("PARSED:", data);
+
+                  if (!data.token) {
+                      alert("Token tidak ada");
+                      return;
                   }
-              });
+
+                  snap.pay(data.token, {
+                      onSuccess: function(result){
+                          alert("Payment Success!");
+                          window.location.reload();
+                      },
+
+                      onPending: function(result){
+                          alert("Waiting for payment!");
+                      },
+
+                      onError: function(result){
+                          alert("Payment failed!");
+                          console.log(result);
+                      }
+                  });
+
+              } catch (e) {
+                  console.error(e);
+                  alert("ERROR");
+              }
 
           });
-
       });
-</script>
+      </script>
   </body>
 </html>
