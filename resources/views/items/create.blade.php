@@ -42,10 +42,13 @@
 
         <div class="col-lg-6">
             <div class="card shadow-lg border-0 p-4 rounded-4 mt-3">
-
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        {{ $errors->first() }}
+                    </div>
+                @endif
                 <form method="POST" action="/report" enctype="multipart/form-data">
                     @csrf
-
                     <input type="text" name="website" style="display:none">
                     <div class="mb-3">
                         <label class="form-label">Item Name</label>

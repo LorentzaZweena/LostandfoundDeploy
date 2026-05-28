@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ItemController::class,'home']);
 Route::get('/items', [ItemController::class,'index']);
 Route::get('/report', [ItemController::class,'create']);
-Route::post('/report', [ItemController::class,'store']);
+Route::post('/report', [ItemController::class,'store']) ->middleware('throttle:5,1');
 Route::get('/items/{item}', [ItemController::class,'show']);
 
 Route::middleware('auth')->group(function () {

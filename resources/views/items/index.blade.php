@@ -145,5 +145,15 @@
         });
       </script>
      <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+     @if(session('success'))
+    <script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Report Submitted!',
+        text: '{{ session('success') }}',
+        confirmButtonColor: '#355872'
+    });
+    </script>
+    @endif
   </body>
 </html>

@@ -11,6 +11,9 @@
 </head>
 
 <body>
+    @php
+        use Illuminate\Support\Str;
+    @endphp
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-white py-4 fixed-top">
         <div class="container">
@@ -84,7 +87,12 @@
         </h2>
 
         @if($item->image)
+
+        @if(Str::startsWith($item->image, 'items/'))
+            <img src="{{ asset('storage/' . $item->image) }}" class="hero-img mb-4">
+        @else
             <img src="{{ asset($item->image) }}" class="hero-img mb-4">
+        @endif
         @else
             <img src="{{ asset('img/no-image.png') }}" class="hero-img mb-4">
         @endif
