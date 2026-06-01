@@ -28,11 +28,11 @@ class PaymentController extends Controller
         ];
 
         try {
-
             $snapToken = Snap::getSnapToken($params);
-
             return response()->json([
-                'token' => $snapToken
+                'token' => $snapToken,
+                'server_key' => config('midtrans.server_key'),
+                'production' => config('midtrans.is_production')
             ]);
 
         } catch (\Exception $e) {
@@ -41,5 +41,5 @@ class PaymentController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
-    }
+            }
 }
