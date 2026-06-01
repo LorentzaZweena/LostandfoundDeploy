@@ -12,6 +12,12 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999">
+      <div id="loginAlert" class="alert alert-warning alert-dismissible fade show d-none" role="alert">
+          <strong>Warning!</strong> You have to login first.
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    </div>
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-white py-4 fixed-top">
         <div class="container">
@@ -344,9 +350,9 @@
             <li><i class='bx bx-check'></i> Faster support</li>
           </ul>
 
-          <button class="btn btn-primary w-100 rounded-pill mt-4 pay-button" data-price="17000">
-              Get Started
-          </button>
+          <button class="btn btn-primary w-100 rounded-pill mt-4 pay-button" data-price="17000" data-auth="{{ auth()->check() ? 'true' : 'false' }}">
+            Get Started
+        </button>
         </div>
       </div>
 
@@ -654,11 +660,17 @@
     <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
     <script>
       document.querySelectorAll('.pay-button').forEach(button => {
-
           button.addEventListener('click', async function () {
-
+            const isAuth = this.dataset.auth;
+              if (isAuth !== 'true') {
+                  const alertBox = document.getElementById('loginAlert');
+                  alertBox.classList.remove('d-none');
+                  setTimeout(() => {
+                      alertBox.classList.add('d-none');
+                  }, 3000);
+                  return;
+              }
               const price = this.dataset.price;
-
               try {
 
                   const response = await fetch('/pay', {
@@ -674,15 +686,10 @@
                   });
 
                   console.log("STATUS:", response.status);
-
                   const text = await response.text();
-
                   console.log("RAW RESPONSE:", text);
-
                   const data = JSON.parse(text);
-
                   console.log("PARSED:", data);
-
                   if (!data.token) {
                       alert("Token tidak ada");
                       return;
@@ -708,7 +715,6 @@
                   console.error(e);
                   alert("ERROR");
               }
-
           });
       });
       </script>
