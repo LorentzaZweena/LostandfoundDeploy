@@ -484,66 +484,66 @@
       <textarea class="form-control" rows="4" placeholder="Message"></textarea>
 </div> --}}
 
-    <div class="col-12">
-    <button class="btn btn-primary rounded-pill px-4">
-      Send Message
-    </button>
-    </div>
+    {{-- <div class="col-12">
+        <button class="btn btn-primary rounded-pill px-4">
+          Send Message
+        </button>
+        </div>
 
-    </div>
-    </form>
+        </div>
+        </form>
 
-    </div>
+        </div>
 
-    <div class="col-lg-5">
+        <div class="col-lg-5">
 
-    <div class="contact-card text-white p-4 rounded">
+        <div class="contact-card text-white p-4 rounded">
 
-    <p class="small fw-semibold">GET IN TOUCH</p>
+        <p class="small fw-semibold">GET IN TOUCH</p>
 
-    <h5 class="fw-bold mb-4">
-    Seamless Communication, Global Impact.
-    </h5>
+        <h5 class="fw-bold mb-4">
+        Seamless Communication, Global Impact.
+        </h5>
 
-    <div class="mb-3">
-    📍 <strong>Head Office</strong><br>
-    Depok, Indonesia
-    </div>
+        <div class="mb-3">
+        📍 <strong>Head Office</strong><br>
+        Depok, Indonesia
+        </div>
 
-    <div class="mb-3">
-    ✉️ <strong>Email Support</strong><br>
-    lostfound@gmail.com
-    </div>
+        <div class="mb-3">
+        ✉️ <strong>Email Support</strong><br>
+        lostfound@gmail.com
+        </div>
 
-    <div class="mb-4">
-    📞 <strong>Let's Talk</strong><br>
-    +62 812 3456 7890
-    </div>
+        <div class="mb-4">
+        📞 <strong>Let's Talk</strong><br>
+        +62 812 3456 7890
+        </div>
 
-    <p class="mb-2">Follow us :</p>
+        <p class="mb-2">Follow us :</p>
 
-    <span class="social-icon">
-      <a class="social-btn" href="#"><i class='bx bx-link'></i></a>
-    </span>
+        <span class="social-icon">
+          <a class="social-btn" href="#"><i class='bx bx-link'></i></a>
+        </span>
 
-    <span class="social-icon">
-      <a class="social-btn" href="#"><i class='bx bxl-linkedin-square'></i></a>
-    </span>
+        <span class="social-icon">
+          <a class="social-btn" href="#"><i class='bx bxl-linkedin-square'></i></a>
+        </span>
 
-    <span class="social-icon">
-      <a class="social-btn" href="#"><i class='bx bxl-instagram-alt'></i></a>
-    </span>
+        <span class="social-icon">
+          <a class="social-btn" href="#"><i class='bx bxl-instagram-alt'></i></a>
+        </span>
 
-    <span class="social-icon">
-      <a class="social-btn" href="#"><i class='bx bxl-discord-alt'></i></a>
-    </span>
+        <span class="social-icon">
+          <a class="social-btn" href="#"><i class='bx bxl-discord-alt'></i></a>
+        </span>
 
-    </div>
+        </div>
 
-    </div>
+        </div>
 
-    </div>
-    </div>
+        </div>
+    </div> --}}
 
     <div class="map mt-5">
     <iframe
