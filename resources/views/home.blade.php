@@ -303,7 +303,7 @@
 
   </div>
 </section>
-<section class="pricing py-5 bg-light-subtle">
+{{-- <section class="pricing py-5 bg-light-subtle">
   <div class="container text-center">
     <h2 class="fw-bold mb-5">Pricing Plan</h2>
     <div class="row g-4 justify-content-center">
@@ -382,7 +382,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> --}}
 <section class="faq py-5 bg-light">
   <div class="container">
 
@@ -436,7 +436,7 @@
 
   </div>
 </section>
-<section class="contact py-5" id="contact">
+{{-- <section class="contact py-5" id="contact">
     <div class="container">
 
     <div class="row g-5 align-items-start">
@@ -482,7 +482,7 @@
 
       <div class="col-12">
       <textarea class="form-control" rows="4" placeholder="Message"></textarea>
-</div>
+</div> --}}
 
     <div class="col-12">
     <button class="btn btn-primary rounded-pill px-4">
