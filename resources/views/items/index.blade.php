@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   </head>
-  <body style="background:#f6f7fb; font-family:'Poppins', sans-serif;" class="pt-5">
+  <body>
     <div class="container">
         <nav class="navbar bg-white py-3 fixed-top shadow-sm">
     <div class="container d-flex align-items-center">
@@ -55,7 +55,7 @@
     </div>
 </nav>
     </div>
-    <div class="container content-wrapper"> 
+    <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4"> 
         <h5 class="fw-bold">Reports</h5>
 

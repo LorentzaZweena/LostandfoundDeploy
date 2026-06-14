@@ -5,6 +5,12 @@
     /* padding-top:110px; */
 }
 
+body{
+    background:#f6f7fb;
+    font-family:'Poppins',sans-serif;
+    padding-top:90px;
+}
+
 .btn-primary{
     background: #355872;
     border:none;
@@ -226,6 +232,12 @@ border-radius:20px;
 
 @media (max-width:768px){
     .content-wrapper{
+        padding-top:150px;
+    }
+}
+
+@media (max-width:768px){
+    body{
         padding-top:150px;
     }
 }
