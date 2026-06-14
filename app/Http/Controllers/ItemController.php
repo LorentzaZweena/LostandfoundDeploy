@@ -35,7 +35,8 @@ class ItemController extends Controller
 
     public function store(Request $request)
 {
-    if ($request->filled('website')) {
+    try{
+     if ($request->filled('website')) {
         return back();
     }
 
@@ -58,7 +59,12 @@ class ItemController extends Controller
 
     return redirect('/items')->with(
         'success', 'Your report has been submitted successfully.'
-    );
+    );   
+    } catch (\Exception $e) {
+
+        dd($e->getMessage());
+
+    }
 }
 
     public function update(Request $request, Item $item)
@@ -68,7 +74,6 @@ class ItemController extends Controller
             'description' => 'required',
             'category' => 'required',
             'location' => 'required',
-            'contact_email' => 'required|email',
             'status' => 'required|in:lost,found,returned',
             'image' => 'nullable|image'
         ]);
