@@ -55,8 +55,8 @@
     </div>
 </nav>
     </div>
-    <div class="container content-wrapper">
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="container content-wrapper"> 
+    <div class="d-flex justify-content-between align-items-center mb-4"> 
         <h5 class="fw-bold">Reports</h5>
 
         <a href="/report" class="btn btn-primary rounded-pill px-4">

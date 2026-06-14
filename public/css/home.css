@@ -225,9 +225,7 @@ border-radius:20px;
 }
 
 @media (max-width:768px){
-
     .content-wrapper{
         padding-top:150px;
     }
-
 }
