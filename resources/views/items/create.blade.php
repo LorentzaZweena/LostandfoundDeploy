@@ -69,8 +69,26 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Location</label>
-                        <input type="text" name="location" class="form-control" placeholder="Where was it lost or found?">
+                        <label class="form-label">Location (CCIT Room)</label>
+                        <select name="location" class="form-select" required>
+                            <option value="" selected disabled>Select Room</option>
+
+                            <optgroup label="OCR">
+                                <option value="OCR 1">OCR 1</option>
+                                <option value="OCR 2">OCR 2</option>
+                                <option value="OCR 3">OCR 3</option>
+                                <option value="OCR 4">OCR 4</option>
+                                <option value="OCR 5">OCR 5</option>
+                                <option value="OCR 6">OCR 6</option>
+                                <option value="OCR 7">OCR 7</option>
+                            </optgroup>
+
+                            <optgroup label="TCR">
+                                <option value="TCR 1">TCR 1</option>
+                                <option value="TCR 2">TCR 2</option>
+                                <option value="TCR 3">TCR 3</option>
+                            </optgroup>
+                        </select>
                     </div>
 
                     <div class="mb-3">
@@ -85,11 +103,6 @@
                     <div class="mb-3">
                         <label class="form-label">Description</label>
                         <textarea name="description" class="form-control" rows="3" placeholder="Describe the item..."></textarea>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Contact Email</label>
-                        <input type="email" name="contact_email" class="form-control" placeholder="your@email.com">
                     </div>
 
                     <div class="mb-3">

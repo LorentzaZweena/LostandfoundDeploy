@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('location');
             $table->string('status')->default('lost');
             $table->string('image')->nullable();
-            $table->string('contact_email');
             $table->timestamps();
         });
     }

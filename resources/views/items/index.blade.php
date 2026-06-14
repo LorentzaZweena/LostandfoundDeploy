@@ -11,46 +11,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   </head>
-  <body style="background:#f6f7fb; font-family:'Poppins', sans-serif;">
+  <body style="background:#f6f7fb; font-family:'Poppins', sans-serif;" class="pt-5">
     <div class="container">
-        <nav class="navbar navbar-expand-lg bg-white py-4 fixed-top">
-        <div class="container">
-
-        <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
-            <img src="{{ asset('img/briefcase-alt-solid-24.png') }}" width="30" class="me-2">
+        <nav class="navbar bg-white py-3 fixed-top shadow-sm">
+    <div class="container d-flex align-items-center">
+        <a class="navbar-brand fw-bold d-flex align-items-center me-3" href="/">
+            <img src="{{ asset('img/briefcase-alt-solid-24.png') }}"
+                 width="30"
+                 class="me-2">
             Lost&found
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="flex-grow-1 mx-3">
+            <div class="position-relative">
+                <i class='bx bx-search' style="position:absolute; left:18px; top:50%; transform:translateY(-50%); font-size:22px; color:#777;"></i>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/#categories">Categories</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/#services">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link fw-semibold" href="/#contact">Contact</a>
-          </li>
-        </ul>
+                <input type="text" id="searchInput" class="form-control rounded-pill ps-5" placeholder="Search item, category, or location...">
+            </div>
+        </div>
 
         <div class="d-flex gap-2">
             @guest
-                <a href="{{ route('login') }}" class="btn btn-primary rounded-pill px-4">
+                <a href="{{ route('login') }}"
+                   class="btn btn-primary rounded-pill px-4">
                     Login
                 </a>
             @endguest
 
             @auth
-                <a href="/profile" class="btn btn-primary rounded-pill px-4">
+                <a href="/profile"
+                   class="btn btn-primary rounded-pill px-4">
                     Profile
                 </a>
 
@@ -62,71 +52,93 @@
                 </form>
             @endauth
         </div>
-
-        </div>
-        </div>
-        </nav>
     </div>
-    <div class="container mt-5 pt-5">
-
-    <div class="d-flex justify-content-between align-items-center mb-4 mt-3 pt-3">
+</nav>
+    </div>
+    <div class="container content-wrapper">
+    <div class="d-flex justify-content-between align-items-center mb-4">
         <h5 class="fw-bold">Reports</h5>
 
         <a href="/report" class="btn btn-primary rounded-pill px-4">
             Add New Report
         </a>
     </div>
+<div class="row g-4">
+    @foreach($items as $item)
+    <div class="col-md-6 col-lg-3 item-card">
+        <div class="text-decoration-none text-dark">
+            <div class="card report-card shadow-sm h-100" data-search=" {{ strtolower($item->title) }} {{ strtolower($item->category) }} {{ strtolower($item->location) }} {{ strtolower($item->status) }}">
+                <div class="position-relative">
+                    @if($item->image)
+                    <div data-bs-toggle="modal" data-bs-target="#imageModal{{ $item->id }}" onclick="event.stopPropagation();">
 
-    <div class="row g-4">
-        @foreach($items as $item)
-        <div class="col-md-6 col-lg-3">
-            <a href="{{ url('/items/'.$item->id) }}" class="text-decoration-none text-dark">
-                <div class="card report-card shadow-sm h-100">
-                    <div class="card-body text-center">
-                        <img src="{{ asset('img/pp.jpg') }}" class="profile-img mb-2">
-                        <h6 class="fw-semibold mb-1">
-                            @if($item->user)
-                                {{ $item->user->name }}
-                            @else
-                                Guest
-                            @endif
-                        </h6>
+                    <img
+                    src="{{ asset('storage/'.$item->image) }}" class="card-img-top" style=" height:220px;width:100%; object-fit:cover; object-position:center; cursor:pointer;">
 
-                        <small class="text-muted d-block mb-3">
-                            {{ $item->title }}
-                        </small>
-                        <hr>
-                        <div class="info-row">
-                            <i class='bx bx-map'></i>
-                            <span>{{ $item->location }}</span>
-                        </div>
+                    </div>
+                    @else
+                    <img src="{{ asset('img/no-image.png') }}"
+                         class="card-img-top"
+                         style="height:220px;object-fit:cover;">
+                    @endif
 
-                        <div class="info-row">
-                            <i class='bx bx-envelope'></i>
-                            <span>{{ $item->contact_email }}</span>
-                        </div>
-
-                        <div class="info-row">
-                            <i class='bx bx-image'></i>
-                            <span>
-                                @if($item->image)
-                                    See image
-                                @else
-                                    No Image
-                                @endif
-                            </span>
-                        </div>
-
-                        <div class="info-row">
-                            <i class='bx bx-category'></i>
-                            <span>{{ $item->category }}</span>
-                        </div>
+                    <div class="position-absolute bottom-0 start-0 w-100 p-2 text-white"
+                         style="background:rgba(0,0,0,.45);font-size:12px;">
+                        <div><i class='bx bx-map'></i> {{ $item->location }}</div>
+                        <div><i class='bx bx-time'></i> {{ $item->created_at->format('d M Y') }} - {{ $item->created_at->format('H:i') }}</div>
                     </div>
                 </div>
-            </a>
+
+                <div class="card-body">
+                    <h6 class="fw-bold mb-3">{{ $item->title }}</h6>
+
+                    <div class="info-row mb-2">
+                        <i class='bx bx-map'></i>
+                        <span>{{ $item->location }}</span>
+                    </div>
+
+                    <div class="info-row mb-2">
+                        <i class='bx bx-category'></i>
+                        <span>{{ $item->category }}</span>
+                    </div>
+
+                    <div class="info-row mb-2">
+                        <i class='bx bx-check-circle'></i>
+                        @if($item->status=="lost")
+                            <span class="badge bg-danger">Lost</span>
+                        @elseif($item->status=="found")
+                            <span class="badge bg-success">Found</span>
+                        @else
+                            <span class="badge bg-primary">Returned</span>
+                        @endif
+                    </div>
+
+                    <div class="info-row">
+                        <i class='bx bx-time'></i>
+                        <span>{{ $item->created_at->format('l') }} - {{ $item->created_at->format('H:i') }}</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        @endforeach
+
+        <div class="modal fade" id="imageModal{{ $item->id }}" tabindex="-1">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content border-0 bg-transparent">
+                    <div class="modal-body p-0 text-center">
+                        @if($item->image)
+                        <img src="{{ asset('storage/'.$item->image) }}" class="img-fluid rounded shadow" style=" max-height:85vh; width:auto; object-fit:contain;">
+                        @else
+                        <img src="{{ asset('img/no-image.png') }}" class="img-fluid w-100">
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    @endforeach
+</div>
+</div>
+</div>
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
@@ -155,5 +167,23 @@
     });
     </script>
     @endif
+    <script>
+        const searchInput=document.getElementById("searchInput");
+        searchInput.addEventListener("keyup",function(){
+            let keyword=this.value.toLowerCase();
+            let cards=document.querySelectorAll(".item-card");
+            cards.forEach(function(card){
+                let text=card.querySelector(".report-card")
+                            .dataset.search
+                            .toLowerCase();
+                if(text.includes(keyword)){
+                    card.style.display="";
+                }
+                else{
+                    card.style.display="none";
+                }
+            });
+        });
+        </script>
   </body>
 </html>

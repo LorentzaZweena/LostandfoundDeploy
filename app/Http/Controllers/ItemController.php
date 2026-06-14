@@ -43,8 +43,7 @@ class ItemController extends Controller
         'title' => 'required|min:3|max:100',
         'description' => 'required|min:10|max:500',
         'category' => 'required',
-        'location' => 'required|min:3|max:100',
-        'contact_email' => 'required|email',
+        'location' => 'required|in:OCR 1,OCR 2,OCR 3,OCR 4,OCR 5,OCR 6,OCR 7,TCR 1,TCR 2,TCR 3',
         'status' => 'required|in:lost,found',
         'image' => 'nullable|image|max:2048'
     ]);
