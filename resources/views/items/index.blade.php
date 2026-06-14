@@ -36,9 +36,17 @@
                    class="btn btn-primary rounded-pill px-4">
                     Login
                 </a>
+                <a href="/report"
+                   class="btn btn-primary rounded-pill px-4">
+                    Add new report
+                </a>
             @endguest
 
             @auth
+                <a href="/report"
+                   class="btn btn-primary rounded-pill px-4">
+                    Add new report
+                </a>
                 <a href="/profile"
                    class="btn btn-primary rounded-pill px-4">
                     Profile
@@ -55,14 +63,8 @@
     </div>
 </nav>
     </div>
-    <div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-4"> 
-        <h5 class="fw-bold">Reports</h5>
-
-        <a href="/report" class="btn btn-primary rounded-pill px-4">
-            Add New Report
-        </a>
-    </div>
+    <div class="container content-wrapper">
+        <br><br><br>
 <div class="row g-4">
     @foreach($items as $item)
     <div class="col-md-6 col-lg-3 item-card">
