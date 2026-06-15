@@ -57,14 +57,17 @@
 
                     <div class="mb-3">
                         <label class="form-label">Category</label>
-                        <select name="category" class="form-select">
-                            <option selected disabled>Select category</option>
-                            <option>Electronics</option>
-                            <option>Bags</option>
-                            <option>Keys</option>
-                            <option>Documents</option>
-                            <option>Makeup</option>
-                            <option>Others</option>
+                        <select name="category" class="form-select" required>
+                            <option value="" selected disabled>Select category</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Bags">Bags</option>
+                            <option value="ID Cards">ID Cards</option>
+                            <option value="Keys">Keys</option>
+                            <option value="Books">Books</option>
+                            <option value="Makeup">Makeup</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Documents">Documents</option>
+                            <option value="Others">Others</option>
                         </select>
                     </div>
 
