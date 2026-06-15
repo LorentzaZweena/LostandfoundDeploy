@@ -64,20 +64,34 @@ class ProfileController extends Controller
         {
             $user = auth()->user();
             $status = $request->query('status');
+            $category = $request->query('category');
+
             $query = $user->items();
 
             if ($status) {
                 $query->where('status', $status);
             }
 
+            if ($category) {
+                $query->where('category', $category);
+            }
+
             $items = $query->latest()->get();
+
             $totalReports = $user->items()->count();
             $lost = $user->items()->where('status', 'lost')->count();
             $found = $user->items()->where('status', 'found')->count();
             $returned = $user->items()->where('status', 'returned')->count();
 
             return view('profile.index', compact(
-                'user', 'items', 'totalReports', 'lost', 'found', 'returned', 'status'
+                'user',
+                'items',
+                'totalReports',
+                'lost',
+                'found',
+                'returned',
+                'status',
+                'category'
             ));
         }
 

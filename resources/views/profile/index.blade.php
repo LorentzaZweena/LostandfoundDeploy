@@ -75,27 +75,44 @@
             <div class="card-custom bg-white shadow-sm">
                 <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
                     <h6 class="fw-bold mb-0">Your Reports</h6>
-                    <div class="d-flex gap-3 flex-wrap">
-                        <a href="{{ url('/profile') }}"
-                        class="filter-tab {{ !$status ? 'active-tab' : '' }}">
-                            All
-                        </a>
+                    <form method="GET" action="/profile" class="row g-2 mb-3">
+                    <div class="col-md-4">
+                        <select name="status" class="form-select" onchange="this.form.submit()">
+                            <option value="">All Status</option>
+                            <option value="lost" {{ $status=='lost'?'selected':'' }}>
+                                Lost
+                            </option>
+                            <option value="found" {{ $status=='found'?'selected':'' }}>
+                                Found
+                            </option>
+                            <option value="returned" {{ $status=='returned'?'selected':'' }}>
+                                Returned
+                            </option>
+                        </select>
+                    </div>
 
-                        <a href="{{ url('/profile?status=lost') }}"
-                        class="filter-tab {{ $status == 'lost' ? 'active-tab' : '' }}">
-                            Lost
-                        </a>
+                    <div class="col-md-4">
+                        <select name="category" class="form-select" onchange="this.form.submit()">
+                            <option value="">All Categories</option>
+                            <option value="Electronics" {{ $category=='Electronics'?'selected':'' }}>Electronics</option>
+                            <option value="Bags" {{ $category=='Bags'?'selected':'' }}>Bags</option>
+                            <option value="ID Cards" {{ $category=='ID Cards'?'selected':'' }}>ID Cards</option>
+                            <option value="Keys" {{ $category=='Keys'?'selected':'' }}>Keys</option>
+                            <option value="Books" {{ $category=='Books'?'selected':'' }}>Books</option>
+                            <option value="Makeup" {{ $category=='Makeup'?'selected':'' }}>Makeup</option>
+                            <option value="Accessories" {{ $category=='Accessories'?'selected':'' }}>Accessories</option>
+                            <option value="Documents" {{ $category=='Documents'?'selected':'' }}>Documents</option>
+                            <option value="Others" {{ $category=='Others'?'selected':'' }}>Others</option>
+                        </select>
+                    </div>
 
-                        <a href="{{ url('/profile?status=found') }}"
-                        class="filter-tab {{ $status == 'found' ? 'active-tab' : '' }}">
-                            Found
-                        </a>
-
-                        <a href="{{ url('/profile?status=returned') }}"
-                        class="filter-tab {{ $status == 'returned' ? 'active-tab' : '' }}">
-                            Returned
+                    <div class="col-md-2">
+                        <a href="/profile" class="btn btn-outline-secondary w-100">
+                            Reset
                         </a>
                     </div>
+
+                </form>
                 </div>
                 @forelse($items as $item)
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3" data-bs-toggle="modal" data-bs-target="#itemModal{{ $item->id }}" style="cursor:pointer;">
@@ -141,8 +158,8 @@
                                     </div>
 
                                     <div class="mb-2">
-                                        <label>Contact Email</label>
-                                        <input type="email" name="contact_email" class="form-control" value="{{ $item->contact_email }}">
+                                        <label>Contact</label>
+                                        <input type="text" name="contact_email" class="form-control" value="{{ $item->contact_email }}">
                                     </div>
 
                                     <div class="mb-2">
