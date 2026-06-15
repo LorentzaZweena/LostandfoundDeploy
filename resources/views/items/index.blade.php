@@ -22,7 +22,7 @@
             Lost&found
         </a>
 
-        <div class="flex-grow-1 mx-3">
+        <div class="flex-grow-1 mx-3 mt-2">
             <div class="position-relative">
                 <i class='bx bx-search' style="position:absolute; left:18px; top:50%; transform:translateY(-50%); font-size:22px; color:#777;"></i>
 
@@ -44,17 +44,17 @@
 
             @auth
                 <a href="/report"
-                   class="btn btn-primary rounded-pill px-4">
+                   class="btn btn-primary rounded-pill px-4 mt-2">
                     <i class='bx bx-plus-medical'></i>
                 </a>
                 <a href="/profile"
-                   class="btn btn-primary rounded-pill px-4">
+                   class="btn btn-primary rounded-pill px-4 mt-2">
                     <i class='bx bxs-user'></i> Profile
                 </a>
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button class="btn btn-danger rounded-pill px-4">
+                    <button class="btn btn-danger rounded-pill px-4 mt-2">
                         <i class='bx bxs-door-open' style='color:#ffffff' ></i> Logout
                     </button>
                 </form>
@@ -64,9 +64,8 @@
 </nav>
     </div>
     <div class="container content-wrapper">
-        <h4>“Not all those who wander are lost.”</h4>
-        <p>— J. R. R. Tolkien</p>
-    <br>
+        <h4 class="mb-3">“Not all those who wander are lost.” — J. R. R. Tolkien</h4>
+        <br>
     <div class="row g-2">
         <div class="col-lg-3 col-md-6">
             <select class="form-select" id="categoryFilter">
