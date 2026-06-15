@@ -45,17 +45,17 @@
             @auth
                 <a href="/report"
                    class="btn btn-primary rounded-pill px-4">
-                    Add new report
+                    <i class='bx bx-plus-medical'></i>
                 </a>
                 <a href="/profile"
                    class="btn btn-primary rounded-pill px-4">
-                    Profile
+                    <i class='bx bxs-user'></i> Profile
                 </a>
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button class="btn btn-danger rounded-pill px-4">
-                        Logout
+                        <i class='bx bxs-door-open' style='color:#ffffff' ></i> Logout
                     </button>
                 </form>
             @endauth
