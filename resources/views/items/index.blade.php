@@ -64,12 +64,66 @@
 </nav>
     </div>
     <div class="container content-wrapper">
-        <br><br><br>
-<div class="row g-4">
+        <h4>“Not all those who wander are lost.”</h4>
+        <p>— J. R. R. Tolkien</p>
+    <br>
+    <div class="row g-2">
+        <div class="col-lg-3 col-md-6">
+            <select class="form-select" id="categoryFilter">
+                <option value="">All Categories</option>
+                <option>Electronics</option>
+                <option>Bags</option>
+                <option>Keys</option>
+                <option>Documents</option>
+                <option>Makeup</option>
+                <option>Others</option>
+            </select>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <select class="form-select" id="locationFilter">
+                <option value="">All Locations</option>
+                <option>OCR 1</option>
+                <option>OCR 2</option>
+                <option>OCR 3</option>
+                <option>OCR 4</option>
+                <option>OCR 5</option>
+                <option>OCR 6</option>
+                <option>OCR 7</option>
+                <option>TCR 1</option>
+                <option>TCR 2</option>
+                <option>TCR 3</option>
+            </select>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+            <select class="form-select" id="statusFilter">
+                <option value="">All Status</option>
+                <option value="lost">Lost</option>
+                <option value="found">Found</option>
+                <option value="returned">Returned</option>
+            </select>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+            <select class="form-select" id="sortFilter">
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+            </select>
+        </div>
+
+        <div class="col-lg-2 d-grid">
+            <button class="btn btn-outline-secondary" id="resetFilter">
+                Reset
+            </button>
+        </div>
+
+    </div>
+<div class="row g-4 mt-3">
     @foreach($items as $item)
     <div class="col-md-6 col-lg-3 item-card">
         <div class="text-decoration-none text-dark">
-            <div class="card report-card shadow-sm h-100" data-search=" {{ strtolower($item->title) }} {{ strtolower($item->category) }} {{ strtolower($item->location) }} {{ strtolower($item->status) }}">
+            <div class="card report-card shadow-sm h-100" data-search="{{ strtolower($item->title) }} {{ strtolower($item->category) }} {{ strtolower($item->location) }} {{ strtolower($item->status) }}" data-category="{{ strtolower($item->category) }}" data-location="{{ strtolower($item->location) }}" data-status="{{ strtolower($item->status) }}" data-date="{{ $item->created_at->timestamp }}">
                 <div class="position-relative">
                     @if($item->image)
                     <div data-bs-toggle="modal" data-bs-target="#imageModal{{ $item->id }}" onclick="event.stopPropagation();">
@@ -171,20 +225,55 @@
     @endif
     <script>
         const searchInput=document.getElementById("searchInput");
-        searchInput.addEventListener("keyup",function(){
-            let keyword=this.value.toLowerCase();
-            let cards=document.querySelectorAll(".item-card");
-            cards.forEach(function(card){
-                let text=card.querySelector(".report-card")
-                            .dataset.search
-                            .toLowerCase();
-                if(text.includes(keyword)){
-                    card.style.display="";
-                }
-                else{
-                    card.style.display="none";
-                }
+        const category=document.getElementById("categoryFilter");
+        const locationFilter=document.getElementById("locationFilter");
+        const status=document.getElementById("statusFilter");
+
+        function filterCards(){
+            let keyword=searchInput.value.toLowerCase();
+            let cat=category.value.toLowerCase();
+            let loc=locationFilter.value.toLowerCase();
+            let stat=status.value.toLowerCase();
+            document.querySelectorAll(".item-card").forEach(card=>{
+                let data=card.querySelector(".report-card");
+                let search=data.dataset.search;
+                let categoryData=data.dataset.category;
+                let locationData=data.dataset.location;
+                let statusData=data.dataset.status;
+
+                let show=true;
+
+                if(keyword && !search.includes(keyword))
+                    show=false;
+
+                if(cat && categoryData!=cat)
+                    show=false;
+
+                if(loc && locationData!=loc)
+                    show=false;
+
+                if(stat && statusData!=stat)
+                    show=false;
+
+                card.style.display=show?"":"none";
+
             });
+
+        }
+
+        searchInput.addEventListener("keyup",filterCards);
+        category.addEventListener("change",filterCards);
+        locationFilter.addEventListener("change",filterCards);
+        status.addEventListener("change",filterCards);
+
+        document.getElementById("resetFilter").addEventListener("click",()=>{
+
+            searchInput.value="";
+            category.value="";
+            locationFilter.value="";
+            status.value="";
+
+            filterCards();
         });
         </script>
   </body>
