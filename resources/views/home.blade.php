@@ -168,61 +168,79 @@
 
         <div class="row g-4">
 
-      <div class="col-md-4">
-        <div class="category-card">
-          📱 Electronics
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="category-card">
-          🎒 Bags
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="category-card">
-          🪪 ID Cards
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="category-card">
-          🔑 Keys
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="category-card">
-          📚 Books
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="category-card">
-          💄 Make up
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="category-card">
-          💍 Accessories
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="category-card">
-          📄 Documents
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="category-card">
-          📦 Others
-        </div>
-      </div>
-
+    <div class="col-md-4">
+        <a href="/items?category=Electronics" class="text-decoration-none text-black">
+            <div class="category-card">
+                📱 Electronics
+            </div>
+        </a>
     </div>
+
+    <div class="col-md-4">
+        <a href="/items?category=Bags" class="text-decoration-none text-black">
+            <div class="category-card">
+                🎒 Bags
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="/items?category=ID%20Cards" class="text-decoration-none text-black">
+            <div class="category-card">
+                🪪 ID Cards
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="/items?category=Keys" class="text-decoration-none text-black">
+            <div class="category-card">
+                🔑 Keys
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="/items?category=Books" class="text-decoration-none text-black">
+            <div class="category-card">
+                📚 Books
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="/items?category=Makeup" class="text-decoration-none text-black">
+            <div class="category-card">
+                💄 Make up
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="/items?category=Accessories" class="text-decoration-none text-black">
+            <div class="category-card">
+                💍 Accessories
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="/items?category=Documents" class="text-decoration-none text-black">
+            <div class="category-card">
+                📄 Documents
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="/items?category=Others" class="text-decoration-none text-black">
+            <div class="category-card">
+                📦 Others
+            </div>
+        </a>
+    </div>
+
+</div>
       </div>
     </section>
     <section class="about py-5">

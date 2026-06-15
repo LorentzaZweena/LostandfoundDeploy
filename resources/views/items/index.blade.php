@@ -71,12 +71,15 @@
         <div class="col-lg-3 col-md-6">
             <select class="form-select" id="categoryFilter">
                 <option value="">All Categories</option>
-                <option>Electronics</option>
-                <option>Bags</option>
-                <option>Keys</option>
-                <option>Documents</option>
-                <option>Makeup</option>
-                <option>Others</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Bags">Bags</option>
+                <option value="ID Cards">ID Cards</option>
+                <option value="Keys">Keys</option>
+                <option value="Books">Books</option>
+                <option value="Makeup">Makeup</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Documents">Documents</option>
+                <option value="Others">Others</option>
             </select>
         </div>
 
@@ -275,6 +278,16 @@
 
             filterCards();
         });
+        </script>
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const selectedCategory = params.get("category");
+
+            if (selectedCategory) {
+                category.value = selectedCategory;
+            }
+
+            filterCards();
         </script>
   </body>
 </html>
