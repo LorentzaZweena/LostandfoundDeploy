@@ -126,7 +126,7 @@
                     </span>
                 </div>
                 <div class="modal fade" id="itemModal{{ $item->id }}" tabindex="-1">
-                    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Edit Report</h5>
@@ -176,18 +176,31 @@
                                         <input type="file" name="image" class="form-control">
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary w-100 mb-2">
-                                        Update Report
+                                    <div class="row g-2 mt-2">
+
+                                    <div class="d-flex gap-2 mt-3 sticky-bottom bg-white pt-2">
+
+                                    <button type="submit"
+                                        class="btn btn-primary flex-fill">
+                                        Update
                                     </button>
+
                                 </form>
-                                <form method="POST" action="/items/{{ $item->id }}">
+
+                                <form method="POST"
+                                    action="/items/{{ $item->id }}"
+                                    class="deleteForm">
                                     @csrf
                                     @method('DELETE')
 
-                                    <button class="btn btn-danger w-100">
+                                    <button type="submit" class="btn btn-danger w-100">
                                         Delete Report
                                     </button>
                                 </form>
+
+                                </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -203,5 +216,28 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
      <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+        document.querySelectorAll('.deleteForm').forEach(form => {
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Delete Report?',
+                    text: "This action cannot be undone.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        form.submit();
+                    }
+                });
+            });
+        });
+        </script>
 </body>
 </html>
