@@ -74,10 +74,10 @@ class ItemController extends Controller
             'description' => 'required',
             'category' => 'required',
             'location' => 'required',
+            'contact_email' => 'nullable|string|max:255',
             'status' => 'required|in:lost,found,returned',
             'image' => 'nullable|image'
         ]);
-
         if($request->hasFile('image')){
             $data['image'] = $request->file('image')->store('items','public');
         }
