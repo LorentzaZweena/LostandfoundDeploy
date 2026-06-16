@@ -3,6 +3,8 @@
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\AdminController;
+
 use App\Models\Item;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/reports', [ItemController::class, 'pendingReports']);
     Route::post('/admin/reports/{item}/approve', [ItemController::class, 'approve']);
     Route::post('/admin/reports/{item}/reject', [ItemController::class, 'reject']);
+    Route::get('/admin/approved', [ItemController::class, 'approvedReports']);
+    Route::get('/admin/users', [AdminController::class, 'users']);
+    Route::post('/admin/users/{user}/role', [AdminController::class, 'updateRole']);
 });
 
 require __DIR__.'/auth.php';

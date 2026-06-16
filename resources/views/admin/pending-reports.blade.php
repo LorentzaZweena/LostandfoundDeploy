@@ -43,8 +43,15 @@
         Pending Reports
     </a>
 
-    <form method="POST" action="{{ route('logout') }}">
+    <a href="/admin/users" class="active">
+        <i class='bx bx-user'></i>
+        User Management
+    </a>
+
+    <form method="POST"
+          action="{{ route('logout') }}">
         @csrf
+
         <button class="btn btn-danger w-100 mt-4">
             Logout
         </button>

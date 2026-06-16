@@ -132,29 +132,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
      <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-     @if(session('success'))
-        <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Report Submitted!',
-            text: '{{ session('success') }}',
-            confirmButtonColor: '#355872'
-        }).then(() => {
-            window.location.href = '/items';
-        });
-        </script>
-    @endif
-    @if(session('pending'))
-    <script>
-    Swal.fire({
-        icon: 'info',
-        title: 'Report Submitted',
-        text: '{{ session('pending') }}',
-        confirmButtonColor: '#355872'
-    }).then(() => {
-        window.location.href = '/items';
-    });
-    </script>
-    @endif
+
   </body>
 </html>

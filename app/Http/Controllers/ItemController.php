@@ -128,6 +128,16 @@ class ItemController extends Controller
         return back()->with('success', 'Report rejected');
     }
 
+    public function approvedReports()
+    {
+        $items = Item::with('user')
+            ->where('approval_status', 'approved')
+            ->latest()
+            ->get();
+
+        return view('admin.approved-reports', compact('items'));
+    }
+
     public function destroy(Item $item)
     {
         $item->delete();
