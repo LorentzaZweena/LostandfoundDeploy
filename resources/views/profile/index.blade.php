@@ -15,9 +15,21 @@
 <body>
 
 <div class="sidebar shadow-sm text-center">
-    <a href="{{ url('/') }}"><i class='bx bx-home'></i></a>
-    <a href="/profile/edit"><i class='bx bx-user'></i></a>
-    {{-- <a href="#"><i class='bx bx-folder'></i></a> --}}
+
+    <a href="{{ url('/') }}">
+        <i class='bx bx-home'></i>
+    </a>
+
+    <a href="/profile/edit">
+        <i class='bx bx-user'></i>
+    </a>
+
+    @if(auth()->user()->role === 'staff')
+    <a href="/admin/reports">
+        <i class='bx bx-shield-quarter'></i>
+    </a>
+    @endif
+
 </div>
 
 <div class="main container py-4">

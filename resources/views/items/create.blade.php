@@ -144,5 +144,17 @@
         });
         </script>
     @endif
+    @if(session('pending'))
+    <script>
+    Swal.fire({
+        icon: 'info',
+        title: 'Report Submitted',
+        text: '{{ session('pending') }}',
+        confirmButtonColor: '#355872'
+    }).then(() => {
+        window.location.href = '/items';
+    });
+    </script>
+    @endif
   </body>
 </html>
