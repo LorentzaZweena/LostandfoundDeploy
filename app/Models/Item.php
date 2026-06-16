@@ -15,6 +15,7 @@ class Item extends Model
         'location',
         'contact_email',
         'status',
+        'approval_status',
         'image',
     ];
 

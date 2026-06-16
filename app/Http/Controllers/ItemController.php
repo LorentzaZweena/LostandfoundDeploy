@@ -10,7 +10,10 @@ class ItemController extends Controller
 {
     private function getItems()
     {
-        return Item::with('user')->latest()->get();
+        return Item::with('user')
+            ->where('approval_status', 'approved')
+            ->latest()
+            ->get();
     }
 
     public function home()
@@ -54,6 +57,7 @@ class ItemController extends Controller
     }
 
     $data['user_id'] = auth()->id();
+    $data['approval_status'] = 'pending';
 
     Item::create($data);
 
@@ -85,6 +89,34 @@ class ItemController extends Controller
         $item->update($data);
 
         return back()->with('success', 'Report updated!');
+    }
+
+    public function pendingReports()
+    {
+        $items = Item::with('user')
+            ->where('approval_status', 'pending')
+            ->latest()
+            ->get();
+
+        return view('admin.pending-reports', compact('items'));
+    }
+
+    public function approve(Item $item)
+    {
+        $item->update([
+            'approval_status' => 'approved'
+        ]);
+
+        return back()->with('success', 'Report approved');
+    }
+
+    public function reject(Item $item)
+    {
+        $item->update([
+            'approval_status' => 'rejected'
+        ]);
+
+        return back()->with('success', 'Report rejected');
     }
 
     public function destroy(Item $item)

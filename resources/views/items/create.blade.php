@@ -99,7 +99,10 @@
                         <select name="status" class="form-select">
                             <option value="" disabled selected>Select status</option>
                             <option value="lost">Lost</option>
+
+                        @if(auth()->user()->role === 'staff')
                             <option value="found">Found</option>
+                        @endif
                         </select>
                     </div>
 

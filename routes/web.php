@@ -21,6 +21,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/photo', [ProfileController::class, 'updatePhoto']);
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->middleware('auth')->name('profile.edit');
     Route::post('/pay', [PaymentController::class, 'pay']);
+
+    Route::get('/admin/reports', [ItemController::class, 'pendingReports']);
+    Route::post('/admin/reports/{item}/approve', [ItemController::class, 'approve']);
+    Route::post('/admin/reports/{item}/reject', [ItemController::class, 'reject']);
 });
 
 require __DIR__.'/auth.php';
