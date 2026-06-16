@@ -57,28 +57,28 @@ class ItemController extends Controller
     }
 
     $data['user_id'] = auth()->id();
-    $data['approval_status'] = auth()->user()->role === 'staff' ? 'approved' : 'pending';
+    if(auth()->check() && auth()->user()->role === 'staff'){
+        $data['approval_status'] = 'approved';
+    } else {
+        $data['approval_status'] = 'pending';
+    }
     Item::create($data);
 
-    if(auth()->user()->role === 'user'){
-
-    return redirect('/items')->with(
-        'pending',
-        'Your report has been submitted and is awaiting approval from IT Support.'
-    );
-
+    if(auth()->check() && auth()->user()->role === 'staff'){
+    return redirect('/items')
+        ->with('success','Report published successfully.');
     }
 
-    return redirect('/items')->with(
-        'success',
-        'Report published successfully.'
-    );
-    } catch (\Exception $e) {
+    return redirect('/items')
+        ->with('pending',
+            'Your report has been submitted and is awaiting approval from IT Support.'
+        );
+        } catch (\Exception $e) {
 
-        dd($e->getMessage());
+            dd($e->getMessage());
 
+        }
     }
-}
 
     public function update(Request $request, Item $item)
     {

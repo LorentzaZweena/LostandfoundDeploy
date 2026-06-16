@@ -100,7 +100,7 @@
                             <option value="" disabled selected>Select status</option>
                             <option value="lost">Lost</option>
 
-                        @if(auth()->user()->role === 'staff')
+                        @if(auth()->check() && auth()->user()->role === 'staff')
                             <option value="found">Found</option>
                         @endif
                         </select>
