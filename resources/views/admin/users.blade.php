@@ -117,7 +117,7 @@ body{
 
     <a href="/admin/reports">
         <i class='bx bx-file'></i>
-        Pending Reports
+        Pending Reports 
     </a>
 
     <a href="/admin/users" class="active">
